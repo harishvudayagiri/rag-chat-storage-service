@@ -1,4 +1,4 @@
-package com.rag.chatstorageservice;
+package com.rag.chatbot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

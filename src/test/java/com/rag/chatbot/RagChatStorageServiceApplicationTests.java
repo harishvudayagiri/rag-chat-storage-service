@@ -1,4 +1,4 @@
-package com.rag.chatstorageservice;
+package com.rag.chatbot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
