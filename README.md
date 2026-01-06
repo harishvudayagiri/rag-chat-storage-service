@@ -63,13 +63,12 @@ The .env file is not committed intentionally.
 
 ---
 ## Running the Application (Docker)
-Prerequisites
+#### Prerequisites
 
- -- Docker
- -- Docker Compose
+###### Docker,  Docker Compose
 
-Steps
----
+### Steps
+
 ```env
 cp .env.example .env
 docker-compose down -v
@@ -91,46 +90,54 @@ All APIs are protected using an API key.
 
 Each request must include the following header:
 
+```env
 X-API-KEY: <configured-api-key>
+```
 
-
-Requests without a valid API key will return 401 Unauthorized.
+##### ***Requests without a valid API key will return 401 Unauthorized***.
 
 ---
 
 ## API Overview
-```env
+
 Create Chat Session
+```env
 POST /api/sessions
+```
 
 Rename Chat Session
-PUT /api/sessions/{sessionId}/rename
-
+```env
+PUT /api/sessions/{sessionId}/rename 
+```
 Mark / Unmark Favorite
+```env
 PUT /api/sessions/{sessionId}/favorite
-
+```
 Add Message to a Session
+```env
 POST /api/sessions/{sessionId}/messages
-
+```
 Get Messages (Paginated)
+```env
 GET /api/sessions/{sessionId}/messages?page=0&size=10
-
+```
 Delete Session
+```env
 DELETE /api/sessions/{sessionId}
-
-Pagination
+```
+## Pagination
 
 Message retrieval supports pagination using Spring Data Pageable.
 
-Query parameters:
+#### Query parameters:
 
-page – zero-based page index
-
-size – number of records per page
+##### ***page – zero-based page index***.
+##### ***size – number of records per page***.
 
 Example:
 
-GET /api/sessions/{sessionId}/messages?page=1&size=20
+```env
+ GET /api/sessions/{sessionId}/messages?page=1&size=20
 ```
 ---
 
@@ -160,15 +167,13 @@ Example response:
   "status": "UP"
 }
 
-Testing
+## Testing
 
 The APIs can be tested using curl or Postman.
 
 A Postman collection is included in the repository to simplify manual testing of all endpoints, including pagination and rate limiting scenarios.
 
----
-
-## Postman Collection
+### Postman Collection
 
 A Postman collection is included in the repository under the `postman/` directory.
 
