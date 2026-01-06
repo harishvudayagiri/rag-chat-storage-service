@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "f9cbb558-11c4-486a-8fdd-a534df84ffad",
+		"name": "ChatBot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25019086"
+	},
+	"item": [
+		{
+			"name": "Create Session",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "test-api-key",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"hash\",\n  \"name\": \"next Chat\",\n  \"favorite\": false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/api/sessions"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Chat Message",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "test-api-key",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"sender\": \"USER\",\n  \"content\": \"Message 62 for the first Session\",\n  \"retrievedContext\": \"Message 63 - ChatBot doing for first Session \"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/api/sessions/003fcfe0-8fe9-46ac-8788-1b4aae4a9cf9/messages"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Chat Messages for SessionID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "test-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/api/sessions/003fcfe0-8fe9-46ac-8788-1b4aae4a9cf9/messages"
+			},
+			"response": []
+		},
+		{
+			"name": "Rename Session",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "test-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"New Chat\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/api/sessions/d0924f75-eefd-45cc-b81c-a64e7fa55443/rename"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Session",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "test-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": "{{host}}/api/sessions/ca20e90c-e2f7-4263-b4df-f29a2da6267d"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Chat Messages By Page",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "test-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/sessions/003fcfe0-8fe9-46ac-8788-1b4aae4a9cf9/messages?page=3&size=20",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"sessions",
+						"003fcfe0-8fe9-46ac-8788-1b4aae4a9cf9",
+						"messages"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "3"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Favorite and Not Favorite",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "test-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"favorite\": false\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/api/sessions/d0924f75-eefd-45cc-b81c-a64e7fa55443/favorite"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Collection-level test script - runs after each request",
+					"// Logs request and response summary to console",
+					"",
+					"console.log('========================================');",
+					"console.log('REQUEST SUMMARY');",
+					"console.log('========================================');",
+					"console.log('Request Name:', pm.info.requestName);",
+					"console.log('Request ID:', pm.info.requestId);",
+					"console.log('Method:', pm.request.method);",
+					"console.log('URL:', pm.request.url.toString());",
+					"",
+					"if (pm.request.headers && pm.request.headers.count() > 0) {",
+					"    console.log('Headers:');",
+					"    pm.request.headers.each(function(header) {",
+					"        if (!header.disabled) {",
+					"            console.log('  ' + header.key + ': ' + header.value);",
+					"        }",
+					"    });",
+					"}",
+					"",
+					"if (pm.request.body && pm.request.body.raw) {",
+					"    console.log('Request Body:', pm.request.body.raw);",
+					"}",
+					"",
+					"console.log('----------------------------------------');",
+					"console.log('RESPONSE SUMMARY');",
+					"console.log('----------------------------------------');",
+					"console.log('Status Code:', pm.response.code);",
+					"console.log('Status:', pm.response.status);",
+					"console.log('Response Time:', pm.response.responseTime + 'ms');",
+					"console.log('Response Size:', pm.response.responseSize + ' bytes');",
+					"",
+					"if (pm.response.headers && pm.response.headers.count() > 0) {",
+					"    console.log('Response Headers:');",
+					"    pm.response.headers.each(function(header) {",
+					"        console.log('  ' + header.key + ': ' + header.value);",
+					"    });",
+					"}",
+					"",
+					"try {",
+					"    const responseBody = pm.response.json();",
+					"    console.log('Response Body (JSON):', JSON.stringify(responseBody, null, 2));",
+					"} catch (e) {",
+					"    const responseText = pm.response.text();",
+					"    if (responseText) {",
+					"        console.log('Response Body (Text):', responseText.substring(0, 500));",
+					"    } else {",
+					"        console.log('Response Body: (empty)');",
+					"    }",
+					"}",
+					"",
+					"console.log('========================================');",
+					"console.log('Iteration:', pm.info.iteration + 1, 'of', pm.info.iterationCount);",
+					"console.log('========================================');"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
