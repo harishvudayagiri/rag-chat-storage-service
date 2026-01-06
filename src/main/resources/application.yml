@@ -1,8 +1,30 @@
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/chatdb
+#    username: chatuser
+#    password: chatpass
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+#
+#security:
+#  api-key: test-api-key
+#app:
+#  rate-limit:
+#    requests-per-minute: 2
+#
+#
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/chatdb
-    username: chatuser
-    password: chatpass
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/chatdb}
+    username: ${SPRING_DATASOURCE_USERNAME:chatuser}
+    password: ${SPRING_DATASOURCE_PASSWORD:chatpass}
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -11,7 +33,9 @@ spring:
       hibernate:
         format_sql: true
 
-
 security:
-  api-key: test-api-key
+  api-key: ${SECURITY_API_KEY:test-api-key}
 
+app:
+  rate-limit:
+    requests-per-minute: ${APP_RATE_LIMIT_REQUESTS_PER_MINUTE:60}

@@ -1,6 +1,7 @@
 package com.rag.chatbot.controller;
 
 import com.rag.chatbot.dto.CreateSessionRequest;
+import com.rag.chatbot.dto.FavoriteSessionRequest;
 import com.rag.chatbot.dto.RenameSessionRequest;
 import com.rag.chatbot.model.ChatSession;
 import com.rag.chatbot.service.ChatSessionService;
@@ -31,6 +32,11 @@ public class ChatSessionController {
     public ResponseEntity<Void> deleteSession(@PathVariable UUID sessionId) {
         chatSessionService.delete(sessionId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{sessionId}/favorite")
+    public ResponseEntity<ChatSession> updateFavorite(@PathVariable UUID sessionId, @RequestBody FavoriteSessionRequest request) {
+        return ResponseEntity.ok(chatSessionService.updateFavorite(sessionId, request.favorite()));
     }
 
 }

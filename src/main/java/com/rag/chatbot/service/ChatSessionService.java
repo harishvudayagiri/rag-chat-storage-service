@@ -41,4 +41,11 @@ public class ChatSessionService {
         session.setName(name);
         return session;
     }
+
+    @Transactional
+    public @Nullable ChatSession updateFavorite(UUID sessionId, boolean favorite) {
+        ChatSession session = get(sessionId);
+        session.setFavorite(favorite);
+        return session;
+    }
 }
